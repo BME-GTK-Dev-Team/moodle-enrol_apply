@@ -155,5 +155,19 @@ function xmldb_enrol_apply_upgrade($oldversion) {
         }
         upgrade_plugin_savepoint(true, 2023060101, 'enrol', 'apply');
     }
+
+    if ($oldversion < 2023060102) {
+
+        // Rename field group on table enrol_apply_applicationinfo to NEWNAMEGOESHERE.
+        $table = new xmldb_table('enrol_apply_applicationinfo');
+        $field = new xmldb_field('group', XMLDB_TYPE_INTEGER, '10', null, XMLDB_NOTNULL, null, null, 'comment');
+
+        // Launch rename field group.
+        $dbman->rename_field($table, $field, 'selected_group');
+
+        // Apply savepoint reached.
+        upgrade_plugin_savepoint(true, 2023060102, 'enrol', 'apply');
+    }
+
     return true;
 }

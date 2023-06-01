@@ -84,7 +84,9 @@ class enrol_apply_renderer extends plugin_renderer_base {
             'fullname', // Magic happens here: The column heading will automatically be set.
             'email',
             'applydate',
-            'applycomment');
+            'applycomment',
+            'groups'
+        );
         $headers = array(
             html_writer::checkbox('toggleall', 'toggleall', false, '', array('id' => 'toggleall')),
             get_string('course'),
@@ -92,6 +94,7 @@ class enrol_apply_renderer extends plugin_renderer_base {
             get_string('email'),
             get_string('applydate', 'enrol_apply'),
             get_string('applycomment', 'enrol_apply'),
+            get_string("group", "enrol_apply")
         );
         $table->define_columns($columns);
         $table->define_headers($headers);
