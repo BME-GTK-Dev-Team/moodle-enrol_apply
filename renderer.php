@@ -82,6 +82,7 @@ class enrol_apply_renderer extends plugin_renderer_base {
             'checkboxcolumn',
             'course',
             'fullname', // Magic happens here: The column heading will automatically be set.
+            'neptun',
             'email',
             'applydate',
             'applycomment',
@@ -91,6 +92,7 @@ class enrol_apply_renderer extends plugin_renderer_base {
             html_writer::checkbox('toggleall', 'toggleall', false, '', array('id' => 'toggleall')),
             get_string('course'),
             'fullname', // Magic happens here: The column heading will automatically be set due to column name 'fullname'.
+            'Neptun',
             get_string('email'),
             get_string('applydate', 'enrol_apply'),
             get_string('applycomment', 'enrol_apply'),

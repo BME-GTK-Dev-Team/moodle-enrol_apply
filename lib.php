@@ -337,6 +337,12 @@ class enrol_apply_plugin extends enrol_plugin {
             if ($enrolData->selected_group !== 0) {
                 groups_add_member((int)$enrolData->selected_group, $userenrolment->userid);
             }
+            $courseGroups = groups_get_all_groups($instance->courseid);
+            foreach ($courseGroups as $g) {
+                if($g->name === get_config("enrol_apply", "ignore_groups")) {
+                    groups_add_member($g->id, $userenrolment->userid);
+                }
+            }
             $DB->delete_records('enrol_apply_applicationinfo', array('userenrolmentid' => $enrol));
 
 

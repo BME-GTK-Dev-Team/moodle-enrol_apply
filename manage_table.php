@@ -47,7 +47,7 @@ class enrol_apply_manage_table extends table_sql {
 
         $this->set_sql(
             'ue.id AS userenrolmentid, ue.userid, ue.status AS enrolstatus, ue.timecreated AS applydate,
-            ai.comment AS applycomment, u.*, c.fullname as course, ai.selected_group as groupsid, g.name as groups',
+            ai.comment AS applycomment, u.*, c.fullname as course, ai.selected_group as groupsid, g.name as groups, u.idnumber as neptun',
             "{user_enrolments} AS ue
             LEFT JOIN {enrol_apply_applicationinfo} ai ON ai.userenrolmentid = ue.id
             JOIN {user} u ON u.id = ue.userid

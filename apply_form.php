@@ -65,7 +65,7 @@ class enrol_apply_apply_form extends moodleform {
             $comment_title = $instance->customtext2;
         }
  // Group affectation field
-        $courseid = 4636;
+        $courseid = required_param("id", PARAM_INT);
         $groups = groups_get_all_groups($courseid);
 
         $groups2 = array();
