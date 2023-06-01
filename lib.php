@@ -333,7 +333,12 @@ class enrol_apply_plugin extends enrol_plugin {
             }
 
             $this->update_user_enrol($instance, $userenrolment->userid, ENROL_USER_ACTIVE, $userenrolment->timestart, $userenrolment->timeend);
+            $enrolData = $DB->get_record('enrol_apply_applicationinfo', ['userenrolmentid' => $enrol]);
+            if ($enrolData->selected_group !== 0) {
+                groups_add_member((int)$enrolData->selected_group, $userenrolment->userid);
+            }
             $DB->delete_records('enrol_apply_applicationinfo', array('userenrolmentid' => $enrol));
+
 
             $this->notify_applicant(
                     $instance,
