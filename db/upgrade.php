@@ -143,6 +143,17 @@ function xmldb_enrol_apply_upgrade($oldversion) {
         );
     }
 
-    return true;
+    if ($oldversion < 2023060101) {
+        $table = new xmldb_table('enrol_apply_applicationinfo');
+        $field = new xmldb_field('group', XMLDB_TYPE_INTEGER, '10', null, XMLDB_NOTNULL, null, null, 'comment'); 
+        $key = new xmldb_key('group', XMLDB_KEY_FOREIGN, ['group'], 'groups', ['id']);
 
+        // Conditionally launch add field group.
+        if (!$dbman->field_exists($table, $field)) {
+            $dbman->add_field($table, $field);
+            $dbman->add_key($table, $key);
+        }
+        upgrade_plugin_savepoint(true, 2023060101, 'enrol', 'apply');
+    }
+    return true;
 }

@@ -64,6 +64,40 @@ class enrol_apply_apply_form extends moodleform {
         if($instance->customtext2 != ''){
             $comment_title = $instance->customtext2;
         }
+ // Group affectation field
+        $courseid = 4636;
+        $groups = groups_get_all_groups($courseid);
+
+        $groups2 = array();
+
+        $ignore = get_config('enrol_apply','ignore_groups');
+
+        foreach ($groups as $value) {
+            if ($value->name !== $ignore) {
+                $groups2[$value->id] = $value->name;
+            }
+        }
+
+        $groupselector = $mform->addElement('autocomplete', group, get_string('group', 'enrol_apply'), $groups2);
+        $groupselector->setMultiple(false);
+        $mform->setType('group', PARAM_INT);
+        $mform->addHelpButton(group, 'group', 'enrol_apply');
+        $contains = $DB->get_records(
+            'enrol_apply_groups',
+            array('enrolid' => $instance->id),
+            null,
+            'groupid',
+            null,
+            null
+        );
+        $defaults = array();
+
+        foreach ($contains as $value) {
+            if ($value->name !== "admin") {
+                array_push($defaults, $value->groupid);
+            }
+        }
+        $groupselector->setSelected($defaults);
 
         // Optionnal commentary zone
         // Start modification

@@ -149,9 +149,11 @@ class enrol_apply_plugin extends enrol_plugin {
                 } else {
                     $applicationinfo->comment = '';
                 }
-
+                
+                $applicationinfo->group = isset($data->group) ? $data->group : '0';
                 // End modification
-                $DB->insert_record('enrol_apply_applicationinfo', $applicationinfo, false);
+                $id = $DB->insert_record('enrol_apply_applicationinfo', $applicationinfo);
+                $d = $DB->get_record('enrol_apply_applicationinfo', []);
 
                 // Adding groups to the user
                 // Start modification

@@ -26,6 +26,17 @@ defined('MOODLE_INTERNAL') || die();
 
 if ($ADMIN->fulltree) {
     $settings->add(new admin_setting_heading('enrol_apply_enrolname', '', get_string('pluginname_desc', 'enrol_apply')));
+    $settings->add(new admin_setting_heading(
+        'enrol_admin_groupname',
+        'Szakmai gyakorlat sajat beallitasai',
+        ""));// TODO: get_string))
+    $settings->add(new admin_setting_configtext(
+        'enrol_apply/ignore_groups',
+        "Kihagyando csoportok",
+        get_string('confirmmailsubject_desc', 'enrol_apply'),
+        null,
+        PARAM_TEXT,
+        60));
 
     // Confirm mail settings...
     $settings->add(new admin_setting_heading(
