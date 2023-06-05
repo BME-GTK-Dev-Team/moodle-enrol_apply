@@ -345,12 +345,16 @@ class enrol_apply_plugin extends enrol_plugin {
             }
             $DB->delete_records('enrol_apply_applicationinfo', array('userenrolmentid' => $enrol));
 
+            $course = get_course($instance->courseid);
+            if($course) {
+                $course = $course->name;
+            }
 
             $this->notify_applicant(
                     $instance,
                     $userenrolment,
                     'confirmation',
-                    get_config('enrol_apply', 'confirmmailsubject'),
+                    get_config('enrol_apply', 'confirmmailsubject') . $course,
                     get_config('enrol_apply', 'confirmmailcontent'));
         }
     }
