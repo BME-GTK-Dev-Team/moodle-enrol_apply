@@ -9,7 +9,7 @@
         <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="true"/>
         <FIELD NAME="userenrolmentid" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="false" COMMENT="user enrolment id this entry belongs to"/>
         <FIELD NAME="comment" TYPE="text" NOTNULL="false" SEQUENCE="false" COMMENT="comment given by the user during application"/>
-        <FIELD NAME="group" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="false" COMMENT="enrol user in selected group"/>
+        <FIELD NAME="selected_group" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="false" COMMENT="enrol user in selected group"/>
       </FIELDS>
       <KEYS>
         <KEY NAME="primary" TYPE="primary" FIELDS="id"/>

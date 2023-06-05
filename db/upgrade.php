@@ -156,7 +156,7 @@ function xmldb_enrol_apply_upgrade($oldversion) {
         upgrade_plugin_savepoint(true, 2023060101, 'enrol', 'apply');
     }
 
-    if ($oldversion < 2023060102) {
+    if ($oldversion < 2023060501) {
 
         // Rename field group on table enrol_apply_applicationinfo to NEWNAMEGOESHERE.
         $table = new xmldb_table('enrol_apply_applicationinfo');
@@ -166,7 +166,7 @@ function xmldb_enrol_apply_upgrade($oldversion) {
         $dbman->rename_field($table, $field, 'selected_group');
 
         // Apply savepoint reached.
-        upgrade_plugin_savepoint(true, 2023060102, 'enrol', 'apply');
+        upgrade_plugin_savepoint(true, 2023060501, 'enrol', 'apply');
     }
 
     return true;
