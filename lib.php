@@ -449,7 +449,7 @@ class enrol_apply_plugin extends enrol_plugin {
 
         $course = get_course($instance->courseid);
         $selectedGroup = groups_get_group($data->selected_group);   
-        $course->group = $selectedGroup;
+        $course->group = $selectedGroup->name;
         $applicant = core_user::get_user($userid);
 
         // Include standard user profile fields?
