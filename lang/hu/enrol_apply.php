@@ -132,8 +132,8 @@
 ['expirynotifyall'];'Teacher and enrolled user';
 ['expirynotifyenroller'];'Teacher only';
 
-['group'];'Group assignement';
-['group_help'];'You can assign none or multiples groups';
+['group'];'Oktató/csoport';
+['group_help'];'Az Ön oktatója, vagy csoportja';
 
 ['opt_commentaryzone'];'Commentary field';
 ['opt_commentaryzone_help'];'Yes -> Enable the commentary field in the enrol form';
