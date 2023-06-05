@@ -144,7 +144,7 @@ class enrol_apply_renderer extends plugin_renderer_base {
     public function application_notification_mail_body(
         $course, $user, $manageurl, $applydescription, $standarduserfields = null, $extrauserfields = null) {
 
-        $body = '<p>'. get_string('coursename', 'enrol_apply') .': '.format_string($course->fullname). - format_string($course->group)'</p>');
+        $body = '<p>'. get_string('coursename', 'enrol_apply') .': '.format_string($course->fullname). ' - ' . format_string($course->group).'</p>');
         $body .= '<p>'. get_string('applyuser', 'enrol_apply') .': '.$user->firstname.' '.$user->lastname.'</p>';
         $body .= '<p>'. get_string('comment', 'enrol_apply') .': '.$applydescription.'</p>';
         if ($standarduserfields) {
