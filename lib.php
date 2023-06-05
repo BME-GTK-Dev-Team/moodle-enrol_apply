@@ -449,6 +449,8 @@ class enrol_apply_plugin extends enrol_plugin {
 
         $course = get_course($instance->courseid);
         $selectedGroup = groups_get_group($data->selected_group);   
+        var_dump($selectedGroup);
+        die;
         $course->group = $selectedGroup->name;
         $applicant = core_user::get_user($userid);
 
