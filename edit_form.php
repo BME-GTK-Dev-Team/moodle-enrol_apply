@@ -66,7 +66,7 @@ class enrol_apply_edit_form extends moodleform {
         // Start modification
 
         // Group affectation field
-        $courseid = 4636; 
+        $courseid = $instance->courseid;
         $groups = groups_get_all_groups($courseid);
 
         $groups2 = array();
