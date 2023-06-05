@@ -432,7 +432,7 @@ class enrol_apply_plugin extends enrol_plugin {
             $user,
             core_user::get_support_user(),
             $type,
-            $subject,
+            $subject . $course->name,
             $content,
             course_get_url($course),
             $instance->courseid);
