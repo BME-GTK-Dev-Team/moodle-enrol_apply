@@ -347,7 +347,7 @@ class enrol_apply_plugin extends enrol_plugin {
 
             $course = get_course($instance->courseid);
             if($course) {
-                $course = $course->name;
+                $course = $course->fullname . " - " .$course->idnumber;
             }
 
             $this->notify_applicant(
@@ -436,7 +436,7 @@ class enrol_apply_plugin extends enrol_plugin {
             $user,
             core_user::get_support_user(),
             $type,
-            $subject . $course->name,
+            $subject,
             $content,
             course_get_url($course),
             $instance->courseid);
