@@ -448,7 +448,8 @@ class enrol_apply_plugin extends enrol_plugin {
         $renderer = $PAGE->get_renderer('enrol_apply');
 
         $course = get_course($instance->courseid);
-        $course .= groups_get_group($data->selected_group)->name;
+        $selectedGroup = groups_get_group($data->selected_group);   
+        $course->group = $selectedGroup;
         $applicant = core_user::get_user($userid);
 
         // Include standard user profile fields?
